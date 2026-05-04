@@ -29,18 +29,14 @@ graph LR
 - **任务调度器 (Task Scheduler)**: 位于 `assessment_engine.py`，根据维度的“置信度”和“覆盖率”动态推荐任务。
 - **互动任务库 (Interactive Library)**: 提供 HTML5 小游戏和结构化量表，用于硬核指标探测。
 
-### 2.3 记忆与上下文层 (Memory & Context)
-- **RAG 引擎**: 基于 `scikit-learn` 的向量检索，按需加载心理学理论。
-- **持久化管理器**: 负责本地 JSON 文件（Profile, Chat, Progress）的原子化读写。
+### 2.4 适应性 Skill 层 (Adaptive Skills)
+系统集成了国际先进的教育评测 Skill：
+- **BKT 追踪器 (Bayesian Knowledge Tracing)**: 实现对单个知识点（如：进位加法）的掌握概率建模。
+- **ZPD 支架逻辑**: 提供分级提示（Hints）机制，评估孩子的受助表现。
+- **自动化出题器 (Math Problem Gen)**: 根据 BKT 结论动态生成针对性题目。
 
-## 3. 数据流转规则
-1. **输入触发**: 用户输入文字/语音。
-2. **初步回复**: Teacher Agent 生成共情回复，并检查是否有 Pending 任务需要嵌入。
-3. **后台分析**: Analyst Agent 在后台并发（或顺序）运行，分析该轮对话，更新 `student_profile.json`。
-4. **状态变更**: 如果 Analyst 确认了某个特征，Workflow 状态机可能会触发“阶段流转”（如从‘破冰’进入‘深度评测’）。
-
-## 4. 接口规范 (MCP)
-未来计划将 Profile 和 Knowledge 封装为 MCP 资源，支持以下操作：
-- `get_student_profile()`: 获取当前画像。
-- `update_hypotheses(dim, text)`: 添加新的行为假设。
-- `search_knowledge(query)`: 在教育知识库中检索。
+## 3. 国际化先进方法论 (Advanced Methodologies)
+本项目深度集成了以下国际主流的教育技术理论：
+1. **BKT (贝叶斯知识追踪)**: 来源于伯克利和 CMU 的主流 ITS 算法，用于精准量化掌握度。
+2. **Scaffolding (支架式教学)**: 基于 Vygotsky 的 ZPD 理论，强调引导而非灌输。
+3. **Mastery Learning (精通学习)**: 基于 Bloom 的教育理念，确保知识点过关后才进入下一阶段。
