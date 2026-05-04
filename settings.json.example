@@ -1,0 +1,12 @@
+{
+    "api_key": "YOUR_LLM_API_KEY",
+    "base_url": "https://api.deepseek.com",
+    "model_name": "deepseek-chat",
+    "saved_configs": {
+        "Example_Config": {
+            "api_key": "YOUR_LLM_API_KEY",
+            "base_url": "https://api.deepseek.com",
+            "model_name": "deepseek-chat"
+        }
+    }
+}
