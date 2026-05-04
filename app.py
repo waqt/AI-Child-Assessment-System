@@ -10,6 +10,8 @@ from agent import get_ai_response_and_update_profile
 from volcengine import load_voice_config, tts_generate, stt_recognize
 from assessment_engine import get_assessment_status, record_answer, reset_progress, ASSESSMENT_ITEMS
 from interactive_tasks import TASK_TEMPLATES, render_logic_balance_ui
+from skills.report_generator import generate_assessment_report
+from skills.math_solver import solve_math_expression
 import streamlit.components.v1 as components
 from streamlit_mic_recorder import mic_recorder
 import io
@@ -153,6 +155,27 @@ with st.sidebar:
             st.rerun()
         else:
             st.experimental_rerun()
+
+    st.write("---")
+    st.subheader("📊 专家工具")
+    if st.button("📑 生成专业评估报告", use_container_width=True):
+        st.session_state["show_report"] = True
+
+# --- 报告弹窗/显示逻辑 ---
+if st.session_state.get("show_report"):
+    st.markdown("---")
+    st.header("📋 孩子成长发展评估报告")
+    report_md = generate_assessment_report(profile, get_assessment_status())
+    st.markdown(report_md)
+    
+    col1, col2 = st.columns(2)
+    with col1:
+        if st.button("关闭报告"):
+            st.session_state["show_report"] = False
+            st.rerun() if hasattr(st, 'rerun') else st.experimental_rerun()
+    with col2:
+        st.download_button("下载 Markdown 报告", report_md, file_name=f"Assessment_Report_{profile.get('basic_info',{}).get('name','child')}.md")
+    st.markdown("---")
 
 # --- 主界面 ---
 st.title("🤖 AI 数学老师 (破冰评估版)")
