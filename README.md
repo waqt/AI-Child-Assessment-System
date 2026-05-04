@@ -33,14 +33,12 @@ pip install streamlit requests scikit-learn streamlit-mic-recorder
 streamlit run app.py
 ```
 
-## 项目结构
+## 项目文档
 
-- `agent.py`: AI Agent 核心逻辑，包含画像更新引擎。
-- `app.py`: Streamlit 前端界面与语音处理逻辑。
-- `assessment_engine.py`: 结构化评估题库与进度管理。
-- `interactive_tasks.py`: 互动小游戏模板。
-- `knowledge_rag.py`: 基于 TF-IDF 的轻量级 RAG 检索引擎。
-- `knowledge/`: 存放专业教育心理学理论文档（Markdown 格式）。
+完整的需求与设计文档已整理在 `docs/` 目录下：
+- [需求说明书 (PRD)](docs/PRD.md)
+- [架构设计说明 (Architecture)](docs/architecture_design.md)
+- [内部模块规范 (API Spec)](docs/api_spec.md)
 
-## 开源协议
+## 快速开始
 本项目仅供教育与研究使用。
