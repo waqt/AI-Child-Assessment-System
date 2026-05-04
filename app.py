@@ -138,6 +138,19 @@ with st.sidebar:
             st.markdown("**维度得分：**")
             for dim, score in a_status['dimension_scores'].items():
                 st.caption(f"  • {dim}: {score} 分")
+        
+        # --- 新增：学习计划看板 ---
+        st.markdown("---")
+        st.markdown("##### 📅 学习计划与目标")
+        try:
+            with open("learning_plan.json", "r", encoding="utf-8") as f:
+                plan = json.load(f)
+            st.write(f"**长期目标:** {plan.get('long_term_goal', '未设定')}")
+            st.write(f"**当前阶段:** {plan.get('current_phase', '评估中')}")
+            for t in plan.get("weekly_tasks", []):
+                st.caption(f" {'✅' if t['status']=='已完成' else '⏳'} {t['task']}")
+        except:
+            st.caption("学习计划生成中...")
     
     # 专家内心独白（可折叠，方便家长/开发者查看 AI 的推理过程）
     expert_thoughts = profile.get("expert_inner_thoughts", "")

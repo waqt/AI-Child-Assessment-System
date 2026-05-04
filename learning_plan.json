@@ -1,0 +1,10 @@
+{
+    "long_term_goal": "攻克小学 3-4 年级核心数学知识点",
+    "current_phase": "基础能力深度评估期",
+    "weekly_tasks": [
+        {"task": "完成数感基线测试", "status": "进行中"},
+        {"task": "建立性格与动机画像", "status": "进行中"}
+    ],
+    "completed_milestones": [],
+    "optimization_history": []
+}

@@ -2,41 +2,39 @@
 
 ## 1. 总体架构图 (Agentic Workflow)
 
-系统采用 **双 Agent + 状态机编排** 的模式，将“教学交互”与“画像分析”解耦。
+系统采用 **多 Agent 协作 (Multi-Agent) + 动态闭环** 的模式。
 
 ```mermaid
-graph LR
+graph TD
     User((孩子/用户)) <--> UI[Streamlit App]
-    UI <--> Teacher[暖心老师 Agent]
-    Teacher -. 对话流 .-> Analyst[幕后专家 Agent]
-    Analyst --> Profile[(学生画像 JSON)]
-    Analyst --> Engine[评估引擎]
-    Engine -- 推荐任务 --> Teacher
-    RAG[知识库 RAG] <--> Analyst
+    UI <--> Teacher[暖心老师 Teacher Agent]
+    Teacher -. 对话记录 .-> Profiler[画像专家 Profiler Agent]
+    Profiler -- 实时画像 --> DB[(Student Profile JSON)]
+    DB -- 画像驱动策略 --> Strategist[战略规划师 Strategist Agent]
+    Strategist -- 学习计划 & 任务 --> Teacher
+    Strategist -- 调优建议 --> Curriculum[课程引擎 Curriculum Engine]
 ```
 
 ## 2. 核心组件说明
 
-### 2.1 双 Agent 协同层 (Implemented)
+### 2.1 三 Agent 协同层 (In Progress)
 - **暖心老师 (Teacher Agent)**: 
-    - **职责**: 负责 100% 的前端交互、情感共鸣和对话逻辑。
-    - **特点**: 轻量级 Prompt，极速响应，专门负责将评估任务自然“话疗”式地带入对话。
-- **幕后专家 (Analyst Agent)**: 
-    - **职责**: 静默分析对话历史，映射教育理论，维护 JSON 画像。
-    - **特点**: 深度推理 Prompt，后台异步分析（模拟），负责假设验证与去伪存真。
+    - **职责**: 前端情感交互、支架式引导、任务分发。
+- **画像专家 (Profiler Agent)**: 
+    - **职责**: 对话特征提取、BKT 掌握度更新、心理动机分析。
+- **战略规划师 (Strategist Agent)**: 
+    - **职责**: 依据 KG (知识图谱) 设定长短期目标，生成个性化学习路径。
 
-### 2.2 评估与任务层 (Assessment & Task)
-- **任务调度器 (Task Scheduler)**: 位于 `assessment_engine.py`，根据维度的“置信度”和“覆盖率”动态推荐任务。
-- **互动任务库 (Interactive Library)**: 提供 HTML5 小游戏和结构化量表，用于硬核指标探测。
+### 2.2 评估与规划层 (Assessment & Planning)
+- **知识图谱 (K12 Knowledge Graph)**: 核心底层依赖，定义知识点依赖关系。
+- **规划引擎 (Planning Engine)**: 生成 `learning_plan.json`，记录目标的达成情况。
 
-### 2.4 适应性 Skill 层 (Adaptive Skills)
-系统集成了国际先进的教育评测 Skill：
-- **BKT 追踪器 (Bayesian Knowledge Tracing)**: 实现对单个知识点（如：进位加法）的掌握概率建模。
-- **ZPD 支架逻辑**: 提供分级提示（Hints）机制，评估孩子的受助表现。
-- **自动化出题器 (Math Problem Gen)**: 根据 BKT 结论动态生成针对性题目。
+### 2.3 适应性 Skill 层 (Adaptive Skills)
+- **BKT 追踪器**: 量化知识掌握概率。
+- **Math Gen**: 基于 BKT 与 计划 的动态题目生成。
+- **Report Gen**: 家长端深度报告。
 
 ## 3. 国际化先进方法论 (Advanced Methodologies)
-本项目深度集成了以下国际主流的教育技术理论：
-1. **BKT (贝叶斯知识追踪)**: 来源于伯克利和 CMU 的主流 ITS 算法，用于精准量化掌握度。
-2. **Scaffolding (支架式教学)**: 基于 Vygotsky 的 ZPD 理论，强调引导而非灌输。
-3. **Mastery Learning (精通学习)**: 基于 Bloom 的教育理念，确保知识点过关后才进入下一阶段。
+1. **BKT (Bayesian Knowledge Tracing)**: 算法驱动的掌握度评估。
+2. **Scaffolding (支架式教学)**: Vygotsky ZPD 理论的工程化实现。
+3. **Mastery Learning (精通学习)**: 确保核心能力达标后的螺旋式上升。
