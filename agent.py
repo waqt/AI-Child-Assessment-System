@@ -57,8 +57,12 @@ ANALYST_SYSTEM_PROMPT_TEMPLATE = """
 【最新对话记录】
 {latest_dialogue}
 
+4. K12 Knowledge Graph:
+   - 你可以利用内部的 K12 数学知识图谱（含数数、加减乘除基础、分数等）。
+   - 如果发现孩子掌握了 A，可以推荐 B（后续知识）；如果孩子在 B 遇到困难，可以回退到 A（前置知识）进行巩固。
+
 【输出要求】
-1. 在 expert_reasoning 中详细记录你的分析推理过程（请引用 BKT 或 ZPD 理论进行深度解读）。
+1. 在 expert_reasoning 中详细记录你的分析推理过程（请引用 BKT, ZPD 或 知识图谱路径 进行深度解读）。
 2. 在 updated_profile 中提供完整的更新后的画像 JSON。
 3. 识别出哪些技能点（Skill Points）需要进一步通过 BKT 追踪。
 

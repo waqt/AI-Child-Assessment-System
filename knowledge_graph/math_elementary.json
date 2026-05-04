@@ -1,0 +1,18 @@
+{
+    "nodes": [
+        {"id": "counting", "name": "数数与数字识别", "grade": 1, "description": "认识0-100及其顺序"},
+        {"id": "addition_basic", "name": "20以内加法", "grade": 1, "description": "不进位与基础进位加法"},
+        {"id": "subtraction_basic", "name": "20以内减法", "grade": 1, "description": "不退位与基础退位减法"},
+        {"id": "addition_adv", "name": "100以内加法", "grade": 2, "description": "两位数进位加法"},
+        {"id": "multiplication_basic", "name": "乘法基础", "grade": 2, "description": "理解乘法作为重复加法的概念"},
+        {"id": "division_basic", "name": "除法基础", "grade": 3, "description": "平均分与包含分"},
+        {"id": "fractions_basic", "name": "分数的初步认识", "grade": 3, "description": "认识几分之一与几分之几"}
+    ],
+    "edges": [
+        {"source": "counting", "target": "addition_basic", "type": "prerequisite"},
+        {"source": "addition_basic", "target": "subtraction_basic", "type": "prerequisite"},
+        {"source": "addition_basic", "target": "addition_adv", "type": "prerequisite"},
+        {"source": "addition_adv", "target": "multiplication_basic", "type": "prerequisite"},
+        {"source": "multiplication_basic", "target": "division_basic", "type": "prerequisite"}
+    ]
+}
