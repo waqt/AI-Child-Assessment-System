@@ -19,7 +19,7 @@ def get_advanced_problem(topic_id=None):
         return {"q": problem, "a": answer, "source": "mathgenerator"}
     else:
         # 回退逻辑
-        from .math_problem_gen import generate_math_problem
+        from .math_gen import generate_math_problem
         return generate_math_problem()
 
 if __name__ == "__main__":

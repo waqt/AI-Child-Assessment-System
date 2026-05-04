@@ -9,8 +9,7 @@ AI 在对话中自然穿插使用这些题目（方案 A）。
 import json
 import os
 
-_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-_PROGRESS_FILE = os.path.join(_BASE_DIR, "assessment_progress.json")
+_PROGRESS_FILE = os.path.join("storage", "profiles", "assessment_progress.json")
 
 # ============================================================
 # 结构化评估题库

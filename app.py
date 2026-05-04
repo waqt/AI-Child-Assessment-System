@@ -5,13 +5,13 @@ import sys
 # 确保能找到同目录下的模块
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-from memory_manager import load_profile, save_profile, DEFAULT_PROFILE, load_settings, save_settings, load_chat_history, save_chat_history
-from agent import get_ai_response_and_update_profile
-from volcengine import load_voice_config, tts_generate, stt_recognize
-from assessment_engine import get_assessment_status, record_answer, reset_progress, ASSESSMENT_ITEMS
-from interactive_tasks import TASK_TEMPLATES, render_logic_balance_ui
-from skills.report_generator import generate_assessment_report
-from skills.math_solver import solve_math_expression
+from core.memory import load_profile, save_profile, DEFAULT_PROFILE, load_settings, save_settings, load_chat_history, save_chat_history
+from systems.profiler.agent import get_ai_response_and_update_profile
+from core.voice.voice_service import load_voice_config, tts_generate, stt_recognize
+from systems.profiler.assessment import get_assessment_status, record_answer, reset_progress, ASSESSMENT_ITEMS
+from systems.profiler.tasks import TASK_TEMPLATES, render_logic_balance_ui
+from core.report_gen import generate_assessment_report
+from core.math_utils import solve_math_expression
 import streamlit.components.v1 as components
 from streamlit_mic_recorder import mic_recorder
 import io

@@ -32,7 +32,7 @@ class KnowledgeGraphManager:
         return " -> ".join(path)
 
 # 全局单例
-_graph_path = os.path.join(os.path.dirname(__file__), "math_elementary.json")
+_graph_path = os.path.join(os.path.dirname(__file__), "data", "math_elementary.json")
 kg_manager = KnowledgeGraphManager(_graph_path)
 
 if __name__ == "__main__":

@@ -2,16 +2,26 @@
 voice_service.py
 ================
 火山引擎（豆包）语音服务封装模块。
+
 包含：
   - TTS 语音合成（OpenSpeech V3 HTTP 非流式接口）
   - STT 语音识别（OpenSpeech V3 WebSocket 双向流式接口）
-
-API 文档参考：profiling_system/api_helper/ 下的对应 MD 文档。
 
 鉴权方式：新版控制台 X-Api-Key
 TTS 接口：POST https://openspeech.bytedance.com/api/v3/tts/unidirectional
 STT 接口：WSS  wss://openspeech.bytedance.com/api/v3/sauc/bigmodel
 """
+import os
+import json
+
+_VOICE_CONFIG_FILE = os.path.join(os.path.dirname(__file__), "voice_config.json")
+
+def load_voice_config():
+    """加载语音配置"""
+    if not os.path.exists(_VOICE_CONFIG_FILE):
+        return {}
+    with open(_VOICE_CONFIG_FILE, "r", encoding="utf-8") as f:
+        return json.load(f)
 
 import json
 import struct

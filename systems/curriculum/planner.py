@@ -6,7 +6,7 @@ class PlanningEngine:
     """
     负责长短期学习计划的制定与动态调整。
     """
-    def __init__(self, plan_path="learning_plan.json"):
+    def __init__(self, plan_path=os.path.join("storage", "plans", "learning_plan.json")):
         self.plan_path = plan_path
         self.plan = self.load_plan()
 

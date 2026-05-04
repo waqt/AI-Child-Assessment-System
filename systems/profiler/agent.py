@@ -3,8 +3,8 @@ import json
 import requests
 import io
 import os
-from expert_knowledge import get_full_knowledge_base
-from assessment_engine import get_suggested_items_text, get_assessment_status
+from .knowledge.expert_knowledge import get_full_knowledge_base
+from .assessment import get_suggested_items_text, get_assessment_status
 
 # 暖心老师 Prompt (Teacher Agent)
 # 专注于共情交互、自然对话，并根据建议触发评估任务

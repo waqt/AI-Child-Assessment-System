@@ -1,9 +1,9 @@
 import json
 import os
 
-PROFILE_FILE = "student_profile.json"
-SETTINGS_FILE = "settings.json"
-CHAT_HISTORY_FILE = "chat_history.json"
+PROFILE_FILE = os.path.join("storage", "profiles", "student_profile.json")
+SETTINGS_FILE = os.path.join("storage", "settings.json")
+CHAT_HISTORY_FILE = os.path.join("storage", "history", "chat_history.json")
 
 DEFAULT_PROFILE = {
     "basic_info": {

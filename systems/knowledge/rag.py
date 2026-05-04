@@ -18,8 +18,7 @@ import re
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-_BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-_KNOWLEDGE_DIR = os.path.join(_BASE_DIR, "knowledge")
+_KNOWLEDGE_DIR = os.path.join("systems", "profiler", "knowledge")
 
 
 def _split_document(filepath, chunk_size=500, overlap=100):

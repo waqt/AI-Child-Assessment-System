@@ -1,0 +1,11 @@
+{
+    "tts": {
+        "api_key": "d40259b6-2650-48ba-9b8f-fea82c7b3b7d",
+        "resource_id": "seed-tts-2.0",
+        "voice": "zh_female_yingyujiaoxue_uranus_bigtts"
+    },
+    "stt": {
+        "api_key": "d40259b6-2650-48ba-9b8f-fea82c7b3b7d",
+        "resource_id": "volc.bigasr.auc_turbo"
+    }
+}

@@ -362,7 +362,7 @@ def get_contextual_knowledge(conversation_context: str, top_k: int = 8) -> str:
         str: 拼接后的相关知识文本
     """
     try:
-        from knowledge_rag import get_retriever
+        from ...knowledge.rag import get_retriever
         retriever = get_retriever()
         results = retriever.retrieve(conversation_context, top_k=top_k)
         
